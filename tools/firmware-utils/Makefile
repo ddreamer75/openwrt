@@ -10,10 +10,9 @@ PKG_NAME:=firmware-utils
 PKG_RELEASE:=1
 
 PKG_SOURCE_PROTO:=git
-PKG_SOURCE_URL=$(PROJECT_GIT)/project/firmware-utils.git
-PKG_SOURCE_DATE:=2024-03-23
-PKG_SOURCE_VERSION:=6b242991a995c41769977efb010dc9f4e4ec3da2
-PKG_MIRROR_HASH:=00ff2661fda2eb299ccbfaa07dff8fbcf46b3441a6e9f6f46eaa119e66dbe142
+PKG_SOURCE_URL=https://github.com/zamaudio/firmware-utils.git
+PKG_SOURCE_DATE:=2024-07-25
+PKG_SOURCE_VERSION:=1d381483846df2e1f7c3ae4efd853d248f2d98ed
 
 include $(INCLUDE_DIR)/host-build.mk
 include $(INCLUDE_DIR)/cmake.mk
