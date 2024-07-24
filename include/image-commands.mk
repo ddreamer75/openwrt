@@ -358,7 +358,7 @@ define Build/elx-header
 endef
 
 define Build/eva-image
-	$(STAGING_DIR_HOST)/bin/lzma2eva $(KERNEL_LOADADDR) $(KERNEL_LOADADDR) $@ $@.new
+	$(STAGING_DIR_HOST)/bin/lzma2eva $(KERNEL_LOADADDR) $(KERNEL_ENTRY) $@ $@.new
 	mv $@.new $@
 endef
 
