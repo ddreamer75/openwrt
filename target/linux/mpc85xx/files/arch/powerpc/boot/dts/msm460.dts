@@ -175,6 +175,13 @@
 				  0x1000000 0x0 0x0
 				  0x1000000 0x0 0x0
 				  0x0 0x100000>;
+
+			wifi@0,0 {
+				reg = <0x0000 0 0 0 0>;
+				nvmem-cells = <&macaddr_hwinfo_1f9bd 0>;
+				nvmem-cell-names = "mac-address";
+				qca,led-pin = /bits/ 8 <2>;
+			};
 		};
 	};
 
@@ -190,6 +197,13 @@
 				  0x1000000 0x0 0x0
 				  0x1000000 0x0 0x0
 				  0x0 0x100000>;
+
+			wifi@0,0 {
+				reg = <0x0000 0 0 0 0>;
+				nvmem-cells = <&macaddr_hwinfo_1f9bd 16>;
+				nvmem-cell-names = "mac-address";
+				qca,led-pin = /bits/ 8 <3>;
+			};
 		};
 	};
 
@@ -207,22 +221,6 @@
 			gpios = <&gpio0 1 GPIO_ACTIVE_LOW>;
 			color = <LED_COLOR_ID_GREEN>;
 			function = LED_FUNCTION_LAN;
-		};
-
-		radio1 {
-			gpios = <&gpio0 2 GPIO_ACTIVE_LOW>;
-			color = <LED_COLOR_ID_GREEN>;
-			function = LED_FUNCTION_WLAN;
-			function-enumerator = <1>;
-			linux,default-trigger = "phy0tpt";
-		};
-
-		radio2 {
-			gpios = <&gpio0 3 GPIO_ACTIVE_LOW>;
-			color = <LED_COLOR_ID_GREEN>;
-			function = LED_FUNCTION_WLAN;
-			function-enumerator = <2>;
-			linux,default-trigger = "phy1tpt";
 		};
 	};
 
