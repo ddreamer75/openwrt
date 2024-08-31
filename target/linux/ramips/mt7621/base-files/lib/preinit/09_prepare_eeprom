@@ -1,0 +1,17 @@
+. /lib/functions/system.sh
+
+preinit_prepare_eeprom() {
+	case $(board_name) in
+	netis,n6)
+		EEPROM="/tmp/mt7915_eeprom_dbdc.bin"
+		head -c $((0xe00)) /dev/mtd2 > $EEPROM
+		printf "\x92" | \
+			dd of=$EEPROM seek=$((0x190)) bs=1 conv=notrunc \
+			2>/dev/null
+		;;
+	*)
+		;;
+	esac
+}
+
+boot_hook_add preinit_main preinit_prepare_eeprom
