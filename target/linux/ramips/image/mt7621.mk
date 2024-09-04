@@ -2162,6 +2162,20 @@ define Device/netgear_wndr3700-v5
 endef
 TARGET_DEVICES += netgear_wndr3700-v5
 
+define Device/netis_n6
+  $(Device/dsa-migration)
+  $(Device/nand)
+  DEVICE_VENDOR := netis
+  DEVICE_MODEL := N6
+  IMAGE_SIZE := 129408k
+  KERNEL_LOADADDR := 0x82000000
+  KERNEL := kernel-bin | relocate-kernel $(loadaddr-y) | lzma | \
+	fit lzma $$(KDIR)/image-$$(firstword $$(DEVICE_DTS)).dtb
+  DEVICE_PACKAGES += kmod-mt7915-firmware kmod-usb-ledtrig-usbport \
+	kmod-usb3
+endef
+TARGET_DEVICES += netis_n6
+
 define Device/netis_wf2881
   $(Device/nand)
   $(Device/uimage-lzma-loader)

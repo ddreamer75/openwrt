@@ -1,0 +1,17 @@
+#!/bin/sh
+
+[ -e /lib/firmware/$FIRMWARE ] && exit 0
+
+. /lib/functions/caldata.sh
+
+board=$(board_name)
+
+case "$FIRMWARE" in
+"mediatek/mt7915_eeprom_dbdc.bin")
+	case "$board" in
+	netis,n6)
+		ln -sf /tmp/mt7915_eeprom_dbdc.bin /lib/firmware/$FIRMWARE
+		;;
+	esac
+	;;
+esac
