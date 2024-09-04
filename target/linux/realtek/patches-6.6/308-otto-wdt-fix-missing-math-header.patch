@@ -1,0 +1,28 @@
+From 3cc8266f4df7c27b9835d9fcf5085093d81d3ff3 Mon Sep 17 00:00:00 2001
+From: Markus Stockhausen <markus.stockhausen@gmx.de>
+Date: Sun, 11 Aug 2024 12:29:26 -0400
+Subject: [PATCH] realtek: Backport Realtek Otto WDT driver
+
+Add patch submitted upstream to linux-watchdog and replace the MIPS
+architecture symbols. Requires one extra patch for the DIV_ROUND_*
+macros, which have moved to a different header since 5.10.
+
+Submitted-by: Sander Vanheule <sander@svanheule.net>
+Tested-by: Stijn Segers <foss@volatilesystems.org>
+Tested-by: Paul Fertser <fercerpav@gmail.com>
+Tested-by: Stijn Tintel <stijn@linux-ipv6.be>
+---
+ drivers/watchdog/realtek_otto_wdt.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- a/drivers/watchdog/realtek_otto_wdt.c
++++ b/drivers/watchdog/realtek_otto_wdt.c
+@@ -21,7 +21,7 @@
+ #include <linux/delay.h>
+ #include <linux/interrupt.h>
+ #include <linux/io.h>
+-#include <linux/math.h>
++#include <linux/kernel.h>
+ #include <linux/minmax.h>
+ #include <linux/module.h>
+ #include <linux/mod_devicetable.h>
