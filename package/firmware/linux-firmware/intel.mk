@@ -216,6 +216,15 @@ define Package/e100-firmware/install
 endef
 $(eval $(call BuildPackage,e100-firmware))
 
+Package/i915-firmware = $(call Package/firmware-default,Intel I915 firmware,,LICENSE.i915)
+define Package/i915-firmware/install
+	$(INSTALL_DIR) $(1)/lib/firmware/i915
+	$(CP) \
+		$(PKG_BUILD_DIR)/i915/*.bin \
+		$(1)/lib/firmware/i915
+endef
+$(eval $(call BuildPackage,i915-firmware))
+
 Package/intel-igpu-firmware-dmc = $(call Package/firmware-default,Intel iGPU DMC Display MC firmware)
 define Package/intel-igpu-firmware-dmc/install
 	$(INSTALL_DIR) $(1)/lib/firmware/i915
