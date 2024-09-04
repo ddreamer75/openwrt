@@ -3217,6 +3217,19 @@ define Device/yuncore_a930
 endef
 TARGET_DEVICES += yuncore_a930
 
+define Device/yuncore_wb5g08
+  SOC := qca9563
+  DEVICE_VENDOR := YunCore
+  DEVICE_MODEL := WB 5G08
+  DEVICE_ALT0_VENDOR = KuWfi
+  DEVICE_ALT0_MODEL = WB 5G08
+  IMAGE_SIZE := 16000k
+  IMAGES += tftp.bin
+  IMAGE/tftp.bin := $$(IMAGE/sysupgrade.bin) | yuncore-tftp-header-16m
+  DEVICE_PACKAGES := -uboot-envtools swconfig
+endef
+TARGET_DEVICES += yuncore_wb5g08
+
 define Device/yuncore_xd3200
   SOC := qca9563
   DEVICE_VENDOR := YunCore
